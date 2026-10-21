@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background-color: #0a0d1a;
+    color: #f8fafc;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.font-script {
+  font-family: 'Dancing Script', 'Caveat', 'Kalam', cursive;
+}
+
+.font-hindi {
+  font-family: 'Kalam', 'Rozha One', 'Poppins', sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* 3D Perspective and Card Flip */
+.perspective-1000 {
+  perspective: 1200px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Animations */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.08);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@keyframes floatBob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1.5deg);
+  }
+}
+
+.animate-float-bob {
+  animation: floatBob 3.6s ease-in-out infinite;
+}
+
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2s ease-in-out infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursorBlink 0.9s infinite;
+}

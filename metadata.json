@@ -1,0 +1,6 @@
+{
+  "name": "Neha's Birthday Surprise",
+  "description": "An interactive romantic birthday surprise website for Neha featuring digital rain countdown, musical birthday cat, 3D flip card, sweet memories, and a glowing photo heart finale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

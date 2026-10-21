@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Happy Birthday Neha ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Music Button Top Right -->
+  <button id="musicBtn" class="music-btn" aria-label="Toggle Music">
+    <span id="musicIcon">🔇</span> <span id="musicLabel">Play Music</span>
+  </button>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" src="music/song.mp3" loop preload="auto"></audio>
+
+  <!-- SCENE 1: Matrix Digital Rain -->
+  <div id="scene1" class="scene active">
+    <canvas id="matrixCanvas"></canvas>
+    <div class="matrix-text-container">
+      <div id="matrixText" class="matrix-text">3</div>
+    </div>
+    <button id="skipIntroBtn" class="skip-btn">Skip Intro ➔</button>
+  </div>
+
+  <!-- Background Starry Night Canvas for Scenes 2-6 -->
+  <canvas id="starsCanvas" class="stars-canvas"></canvas>
+
+  <!-- SCENE 2: Birthday Cat -->
+  <div id="scene2" class="scene">
+    <div class="cat-wrapper animate-bob">
+      <img id="catImg" src="images/cat.gif" alt="Birthday Cat" class="cat-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'90\'>🐱🎸</text></svg>'">
+    </div>
+    <p class="cat-caption">A sweet birthday melody just for you... 🐾✨</p>
+    <button id="openCardEarlyBtn" class="text-link-btn">Open Card ➔</button>
+  </div>
+
+  <!-- SCENE 3: The Greeting Card -->
+  <div id="scene3" class="scene">
+    <div class="card-container perspective">
+      <div id="greetingCard" class="card-3d">
+        <div class="card-front">
+          <img src="images/card-front.png" alt="With All My Heart" class="card-art" onerror="this.parentElement.classList.add('art-fallback')">
+          <div class="card-fallback-art">
+            <span class="heart-big">🤲❤️</span>
+            <p class="card-fallback-title">A Special Birthday Card</p>
+            <p class="card-fallback-sub">With all my love</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="tapToOpenBtn" class="tap-open-btn">
+      <span>❤️</span> Tap to open
+    </button>
+  </div>
+
+  <!-- SCENE 4: Photo + Message Pages -->
+  <div id="scene4" class="scene">
+    <div class="book-container">
+      <!-- TOP: Message Box with tiny heart in top right -->
+      <div class="message-box">
+        <span class="corner-heart">💖</span>
+        <div id="typewriterText" class="typewriter-text"></div>
+      </div>
+
+      <!-- BOTTOM: Side-by-Side Photo Box -->
+      <div class="photo-box">
+        <div class="photo-split">
+          <!-- Left Photo Slot -->
+          <div class="photo-slot" id="leftPhotoSlot">
+            <img id="leftPhotoImg" src="" alt="Left Photo">
+            <div class="photo-placeholder" id="leftPlaceholder">
+              <span class="plus-icon">+</span>
+              <span class="photo-desc">Left Photo</span>
+              <span class="photo-filename" id="leftFilename">/images/p1-left.jpg</span>
+            </div>
+            <div class="change-overlay">📷 Change photo</div>
+            <input type="file" id="leftFileInput" accept="image/*" class="hidden-input">
+          </div>
+
+          <div class="photo-divider"></div>
+
+          <!-- Right Photo Slot -->
+          <div class="photo-slot" id="rightPhotoSlot">
+            <img id="rightPhotoImg" src="" alt="Right Photo">
+            <div class="photo-placeholder" id="rightPlaceholder">
+              <span class="plus-icon">+</span>
+              <span class="photo-desc">Right Photo</span>
+              <span class="photo-filename" id="rightFilename">/images/p1-right.jpg</span>
+            </div>
+            <div class="change-overlay">📷 Change photo</div>
+            <input type="file" id="rightFileInput" accept="image/*" class="hidden-input">
+          </div>
+        </div>
+        <p class="photo-hint">💡 Tap any photo to change with your own picture</p>
+      </div>
+
+      <!-- Page Controls -->
+      <div class="page-controls">
+        <button id="prevPageBtn" class="page-btn secondary">Previous</button>
+        <span id="pageIndicator" class="page-indicator">Page 1 / 2</span>
+        <button id="nextPageBtn" class="page-btn primary">Next Page ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENE 5: The Closing Flip (Handled dynamically) -->
+  <div id="scene5" class="scene">
+    <div id="closingCard" class="card-3d closing-anim">
+      <div class="card-front">
+        <div class="card-fallback-art">
+          <span class="heart-big">❤️</span>
+          <p class="card-fallback-title">Forever Yours</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENE 6: Photo Heart Finale -->
+  <div id="scene6" class="scene">
+    <div id="heartArena" class="heart-arena">
+      <!-- Parametric Heart Tiles injected by JavaScript -->
+    </div>
+
+    <!-- Text Under Heart -->
+    <h2 id="finaleText" class="finale-text">I love you ❤️</h2>
+    <p class="finale-sub">Tap any photo to view full size</p>
+
+    <!-- Floating Action Bar -->
+    <div class="finale-actions">
+      <button id="addPhotosBtn" class="action-btn glow-pink">
+        <span>📷 Add Photos</span>
+      </button>
+      <input type="file" id="multiplePhotosInput" accept="image/*" multiple class="hidden-input">
+
+      <button id="resetPhotosBtn" class="action-btn secondary">
+        <span>🗑 Reset</span>
+      </button>
+
+      <button id="replayBtn" class="action-btn outline">
+        <span>🔄 Replay</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Photo Tiles -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <button id="closeLightboxBtn" class="lightbox-close">&times;</button>
+      <img id="lightboxImg" src="" alt="Enlarged Photo">
+      <p class="lightbox-caption">❤️ Cherished Memory</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
