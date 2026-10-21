@@ -185,6 +185,12 @@ export const HeartFinale: React.FC<HeartFinaleProps> = ({
               <img
                 src={tile.imgSrc}
                 alt={`Photo #${tile.id + 1}`}
+                onError={(e) => {
+                  const fallback = DEFAULT_ROMANTIC_PHOTOS[tile.id % DEFAULT_ROMANTIC_PHOTOS.length];
+                  if ((e.target as HTMLImageElement).src !== fallback) {
+                    (e.target as HTMLImageElement).src = fallback;
+                  }
+                }}
                 className="w-full h-full object-cover group-hover:brightness-110"
               />
 

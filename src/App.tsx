@@ -49,8 +49,11 @@ export const CONFIG = {
   // Scene 6: Finale text displayed below the pulsing photo heart
   finaleText: 'Happy Birthday Neha ❤️',
 
-  // Default gallery photos for heart tiles (20 high quality romantic illustrations)
-  defaultGalleryPhotos: DEFAULT_ROMANTIC_PHOTOS,
+  // Default gallery photos for heart tiles (g1.jpg to g20.jpg)
+  defaultGalleryPhotos: Array.from(
+    { length: 20 },
+    (_, i) => `/images/gallery/g${i + 1}.jpg`
+  ),
 
   // Background romantic music file placeholder
   musicUrl: '/music/song.mp3',
